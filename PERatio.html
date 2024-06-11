@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P/E Ratio Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"], input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>P/E Ratio Calculator</h2>
+    <label for="marketPrice">Market Price per Share ($):</label>
+    <input type="number" id="marketPrice" placeholder="Enter market price">
+    <label for="earnings">Earnings per Share ($):</label>
+    <input type="number" id="earnings" placeholder="Enter earnings per share">
+    <input type="submit" value="Calculate P/E Ratio" onclick="calculatePERatio()">
+    <p id="peRatioResult"></p>
+</div>
+
+<script>
+    function calculatePERatio() {
+        var marketPrice = document.getElementById("marketPrice").value;
+        var earnings = document.getElementById("earnings").value;
+
+        // Check if inputs are not empty
+        if (marketPrice === "" || earnings === "") {
+            alert("Please enter both market price and earnings.");
+            return;
+        }
+
+        // Convert inputs to numbers
+        marketPrice = parseFloat(marketPrice);
+        earnings = parseFloat(earnings);
+
+        // Calculate P/E Ratio
+        var peRatio = marketPrice / earnings;
+
+        // Display result
+        document.getElementById("peRatioResult").innerHTML = "P/E Ratio: " + peRatio.toFixed(2);
+    }
+</script>
+</body>
+</html>
